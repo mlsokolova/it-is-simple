@@ -2,7 +2,8 @@
 Environment:  
 VirtualBox machine 4Gb Memory  
 OS Windows 7 SP1 Professional 64bit  
-Oracle XE 18c for FMW Repository(Fusion Middleware Repository)  
+Windows user "oracle" in "Administrators" group
+Oracle XE 18c pluggable database for FMW Repository(Fusion Middleware Repository)  
 
 ## 1.Check system requirements
 link: https://www.oracle.com/technetwork/middleware/fmw-122130-certmatrix-3867828.xlsx  
@@ -108,7 +109,16 @@ Additional dependent components will automatically be selected
 Then set schema passwords, map tablespaces and waiting until load processes will complete
 
 ## 8.Configure Fusion Middleware Services
-Run Configuration Wizard from ADF Infrastructure ORACLE_HOME\oracle_common\common\bin\config.cmd
+Run Configuration Wizard from ADF Infrastructure ORACLE_HOME\oracle_common\common\bin\config.cmd  
+Select Create Domain as Configuration Type  
+![17.Configure FMW. Create domain](images/img17_configure_fmw_create_domain.jpg)  
+<p align="center">Pic 17: Configure FMW. Create domain</p>  
+
+Select following templates: Oracle Forms; Oracle Enterprise Manager; Oracle JRF   
+![17.Configure FMW. Select templates](images/img18_configure_fmw_select_domain_templates.jpg)  
+<p align="center">Pic 18: Configure FMW. Select templates</p>  
+
+
 
 
 References:  
