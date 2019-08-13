@@ -221,7 +221,8 @@ Status of successfully started WLS_FORMS should change to "RUNNING"
 <p align="center">Pic 11.3.2: Started Forms Server</p>  
 
 
-## 11. Configure Mozilla Firefox  
+## 11. Configure Mozilla Firefox 
+Set Mozilla Firefox as default browser  
 Navigation: Firefox > Options > General > Applications  
 Action "Use Java(TM) Web Start Launcher" for the "JNPL File" content  
 ![11.1.Firefox. JNPL File](images/img11.1_firefox.jpg)  
@@ -276,6 +277,28 @@ Navigation: right click on "MODULE1" > select Datablock Wizard
 
 Save your form to folder that in the FORMS_MODULE_PATH (see chapter 10)  
 
+
+### 12.4. Set up Application Server URL  
+Navigation: Forms Builder > Edit > Preferences > Runtime tab  
+Set value for  "Application Server URL" field: http://localhost:9001/forms/frmservlet?config=webstart  
+![12.4.Forms Builder. Set up Application Server URL](images/img12.4.1_application_server_url.jpg)  
+<p align="center">Pic 12.4: Forms Builder. Set up Application Server URL</p>  
+
+
+### 12.5. Run Form  
+Navigation: Forms Builder > Program > Run Form  
+Open jnpl file (OK button)  
+![12.5.1.Run Form](images/img12.5.1_run_form.jpg)  
+<p align="center">Pic 12.5.1: Run Form</p>  
+
+
+Run Oracle Form (Run button)  
+![12.5.2.Run Form](images/img12.5.2_run_form.jpg)  
+<p align="center">Pic 12.5.2: Run Form</p>  
+
+Runned Form Look like this:  
+![12.5.3.Run Form](images/img12.5.3_run_form.jpg)  
+<p align="center">Pic 12.5.3: Run Form</p>  
 
 
 References:  
