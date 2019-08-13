@@ -149,7 +149,7 @@ Configure connection details to the Fusion Middleware Repository for JDBC Dataso
 <p align="center">Pic 8.3: Configure FMW. Fusion Middleware Repository connection details</p>  
 
 Advanced Configuration screen: select "Admin Server", "Topology", "System Components"  
-![8.4.Configure FMW. Fusion Middleware Repository connection details ](images/img8.4_configure_fmw_database_configuration.jpg)  
+![8.4.Configure FMW. Fusion Middleware Repository connection details ](images/img8.4_configure_fmw_advanced_configuration.jpg)  
 <p align="center">Pic 8.4: Configure FMW. Advanced Configuration</p>  
 
 Assign WebLogic Servers to Weblogic Machine  
