@@ -12,7 +12,9 @@ This document contains step-by-step HOWTO:
 1.For develop and run Oracle Forms two Oracle distributives needed:  
 - Oracle ADF(Application Development Framework) Infrastructure which included Weblogic  
 - Oracle Forms/Reports  
+
 2.Run Forms Builder after Wedlogic Domain Configuration  
+
 3.Run Oracle Forms using Java Web Start
 
 Environment:  
