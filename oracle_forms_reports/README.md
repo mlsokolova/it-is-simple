@@ -1,9 +1,26 @@
-# Start with the Oracle Forms/Reports 12.2.1.3
+# Start with the Oracle Forms/Reports 12.2.1.3  
+Oracle Forms is specific tool for the build user interface for manipulation with the data in the Oracle Database Tables.  
+This document contains step-by-step HOWTO:  
+- download required software  
+- install Oracle Application Development Framework Infrastructure  
+- install Oracle Forms/Reports  
+- create user interface(form) upon the demo table  
+- start Weblogic  
+- run Oracle Form  
+
+## Notes 
+For develop and run Oracle Forms two Oracle distributives needed:  
+- Oracle ADF(Application Development Framework) Infrastructure which included Weblogic  
+- Oracle Forms/Reports  
+Run Forms Builder after Wedlogic Domain Configuration  
+Run Oracle Forms using Java Web Start
+
 Environment:  
 VirtualBox machine 4Gb Memory  
 OS Windows 7 SP1 Professional 64bit  
-Windows user "oracle" in "Administrators" group
-Oracle XE 18c pluggable database for FMW Repository(Fusion Middleware Repository)  
+Windows user "oracle" in "Administrators" group  
+Oracle XE 18c pluggable database  
+Mozilla Firefox browser  
 
 ## 1.Check system requirements
 link: https://www.oracle.com/technetwork/middleware/fmw-122130-certmatrix-3867828.xlsx  
@@ -108,7 +125,7 @@ Additional dependent components will automatically be selected
 <p align="center">Pic 7.3: RCU. Select Components</p>  
 Then set schema passwords, map tablespaces and waiting until load processes will complete
 
-## 8.Configure Fusion Middleware Services
+## 8.Configure Weblogic Domain
 Run Configuration Wizard from ADF Infrastructure ORACLE_HOME\oracle_common\common\bin\config.cmd  
 Select Create Domain as Configuration Type  
 ![8.1.Configure FMW. Create domain](images/img8.1_configure_fmw_create_domain.jpg)  
@@ -119,6 +136,8 @@ Select following templates: Oracle Forms; Oracle Enterprise Manager; Oracle JRF
 <p align="center">Pic 8.2: Configure FMW. Select templates</p>  
 
 
+
+
 Keep the default value in the Application Location screen  
 
 Enter administration username and password of WebLogic Domain in the Administrator Account screen  
@@ -127,36 +146,93 @@ Configure connection details to the Fusion Middleware Repository for JDBC Dataso
 ![8.3.Configure FMW. Fusion Middleware Repository connection details ](images/img8.3_configure_fmw_database_configuration.jpg)  
 <p align="center">Pic 8.3: Configure FMW. Fusion Middleware Repository connection details</p>  
 
+Advanced Configuration screen: select "Admin Server", "Topology", "System Components"  
+![8.4.Configure FMW. Fusion Middleware Repository connection details ](images/img8.4_configure_fmw_database_configuration.jpg)  
+<p align="center">Pic 8.4: Configure FMW. Advanced Configuration</p>  
 
-## 9.Configure Forms Environment variables  
-Navigation: Windows Start > Computer > Properties >Advanced System Settings > Environment Variables  
-Variables: ORACLE_HOME, FORMS_BUILDER_CLASSPATH  
-![9.1.Configure Forms Environment Variables](images/img9.1_configure_env.jpg)  
-<p align="center">Pic 9.1: Configure Forms Environment Variables</p>  
-
-
-![9.2.Configure Forms Environment Variables](images/img9.2_configure_env.jpg)  
-<p align="center">Pic 9.2: Configure Forms Environment Variables</p>  
+Assign WebLogic Servers to Weblogic Machine  
+![8.5.Configure FMW. Assign WebLogic Servers to Machine](images/img8.5_configure_fmw_assign_servers_to_machines.jpg)  
+<p align="center">Pic 8.5: Configure FMW. Assign WebLogic Servers to Machine</p>  
 
 
-Value for the FORMS_BUILDER_PATH:  
-```
-FORMS_BUILDER_PATH=%ORACLE_HOME%\jlib\frmbld.jar;%ORACLE_HOME%\jlib\importer.jar;%ORACLE_HOME%\jlib\debugger.jar;%ORACLE_HOME%\jlib\utj.jar;%ORACLE_HOME%\jlib\ewt3.jar;%ORACLE_HOME%\jlib\share.jar;%ORACLE_HOME%\jlib\dfc.jar;%ORACLE_HOME%\jlib\ohj.jar;%ORACLE_HOME%\jlib\help-share.jar;%ORACLE_HOME%\jlib\oracle_ice.jar;%ORACLE_HOME%\jlib\jewt4.jar;%ORACLE_HOME%\forms\java\frmwebutil.jar;%ORACLE_HOME%\forms\java\frmall.jar
-```
-
-## 10. Set up TNS Alias (tnsnames.ora)
+## 9. Set up TNS Alias (tnsnames.ora)
 Run Oracle Net Manager
 Navigation: Windows Start > All Programs > <your OracleHome> Configuration and Migration Tools > Net Manager
-![10.1.Set up TNS Alias. Run Oracle Net Manager](images/img10.1_setup_tns_alias_run_oracle_network_manager.jpg)  
-<p align="center">Pic 10.1: Set up TNS Alias. Run Oracle Net Manager</p>  
+![9.1.Set up TNS Alias. Run Oracle Net Manager](images/img9.1_setup_tns_alias_run_oracle_network_manager.jpg)  
+<p align="center">Pic 9.1: Set up TNS Alias. Run Oracle Net Manager</p>  
 
 
-![10.2.Set up TNS Alias. Oracle Database connection details](images/img10.2_setup_tns_alias_with_oracle_network_manager.jpg)  
-<p align="center">Pic 10.2: Set up TNS Alias. Oracle Database connection details</p>  
+![9.2.Set up TNS Alias. Oracle Database connection details](images/img9.2_setup_tns_alias_with_oracle_network_manager.jpg)  
+<p align="center">Pic 9.2: Set up TNS Alias. Oracle Database connection details</p>  
+
+"ADF Infrastructure ORACLE_HOME"\network\admin\tnsnames.ora should contain something like this:  
+```
+XEPDB1 =
+  (DESCRIPTION =
+    (ADDRESS_LIST =
+      (ADDRESS = (PROTOCOL = TCP)(HOST = 192.168.1.43)(PORT = 32118))
+    )
+    (CONNECT_DATA =
+      (SERVICE_NAME = xepdb1)
+    )
+  )
+```
+
+
+## 10. Configure Forms Server    
+10.1. Create folder for your own forms, for example e:\myforms  
+10.2. Edit configuration file "WebLogic Domain Folder"\config\fmwconfig\servers\WLS_FORMS\applications\formsapp_12.2.1\config\default.env  
+FORMS_MODULE_PATH should include path to your own forms, for example:  
+```
+FORMS_MODULE_PATH=e:\myforms;%FORMS_PATH%  
+```
+TNS_ADMIN should include path to tnsnames.ora file, for example:  
+```
+TNS_ADMIN=%ORACLE_HOME%\network\admin
+```
+
+## 11. Run WebLogic
+
+
+## 10. Configure Mozilla Firefox  
+Navigation: Firefox > Options > General > Applications  
+Action "Use Java(TM) Web Start Launcher" for the "JNPL File" content  
+![10.1.Firefox. JNPL File](images/img10.1_firefox.jpg)  
+<p align="center">Pic 10.1: Firefox. JNPL File</p>  
+
+
+
+
+## 10. Create simpliest form based on the database table  
+### 10.1.Run Oracle Forms Builder  
+Navigation: Windows Start > All Programs >  Oracle FMW 12c Domain - [domain name, see chapter 8] - 12.2.1.3.0 > Oracle Forms Developer - forms1 > Forms Builder  
+Forms Builder will started, form with name MODULE1 will created  
+### 10.2. Connect to Oracle Database from the Forms Builder  
+Navigation: Forms Builder > File > Connect  
+![10.2.1.Forms Builder. Connect to database](images/img10.2.1_create_form_connect_to_database.jpg)  
+<p align="center">Pic 10.2.1: Forms Builder. Connect to database</p>  
+
+
+### 10.3. Create Data Block by the Data Block Wizard  
+Navigation: right click on "MODULE1" > select Datablock Wizard  
+![10.3.1.Forms Builder. Connect to database](images/img10.3.1_create_form_data_block.jpg)  
+<p align="center">Pic 10.3.1: Forms Builder. Create data block</p>  
+
+
+![10.3.2.Forms Builder. Connect to database](images/img10.3.2_create_form_data_block.jpg)  
+<p align="center">Pic 10.3.2: Forms Builder. Create data block</p>  
+
+
+![10.3.3.Forms Builder. Connect to database](images/img10.3.3_create_form_data_block.jpg)  
+<p align="center">Pic 10.3.3: Forms Builder. Create data block</p>  
+
+
+Save your form  
+
 
 
 References:  
-Documentation: https://docs.oracle.com/middleware/12213/formsandreports/index.html  
+Documentation: https://docs.oracle.com/midrdleware/12213/formsandreports/index.html  
 System requirements: https://www.oracle.com/technetwork/middleware/fmw-122130-certmatrix-3867828.xlsx  
 Download Oracle JDK 1.8.0_131: https://www.oracle.com/technetwork/java/javase/downloads/java-archive-javase8-2177648.html  
 Download Application Development Runtime 12.2.1.3: https://www.oracle.com/technetwork/developer-tools/adf/downloads/index.html  
