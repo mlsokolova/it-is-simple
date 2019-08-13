@@ -5,22 +5,22 @@ This document contains step-by-step HOWTO:
 - install Oracle Application Development Framework Infrastructure  
 - install Oracle Forms/Reports  
 - create user interface(form) upon the demo table  
-- start Weblogic  
+- run Weblogic  
 - run Oracle Form  
 
 ## Notes 
-For develop and run Oracle Forms two Oracle distributives needed:  
+1.For develop and run Oracle Forms two Oracle distributives needed:  
 - Oracle ADF(Application Development Framework) Infrastructure which included Weblogic  
 - Oracle Forms/Reports  
-Run Forms Builder after Wedlogic Domain Configuration  
-Run Oracle Forms using Java Web Start
+2.Run Forms Builder after Wedlogic Domain Configuration  
+3.Run Oracle Forms using Java Web Start
 
 Environment:  
-VirtualBox machine 4Gb Memory  
-OS Windows 7 SP1 Professional 64bit  
-Windows user "oracle" in "Administrators" group  
-Oracle XE 18c pluggable database  
-Mozilla Firefox browser  
+- VirtualBox machine 4Gb Memory  
+- OS Windows 7 SP1 Professional 64bit  
+- Windows user "oracle" in "Administrators" group  
+- Oracle XE 18c pluggable database  
+- Mozilla Firefox browser  
 
 ## 1.Check system requirements
 link: https://www.oracle.com/technetwork/middleware/fmw-122130-certmatrix-3867828.xlsx  
@@ -191,43 +191,90 @@ TNS_ADMIN should include path to tnsnames.ora file, for example:
 TNS_ADMIN=%ORACLE_HOME%\network\admin
 ```
 
-## 11. Run WebLogic
+## 11. Run WebLogic  
+### 11.1. Node Manager  
+Execute %ORACLE_HOME%\user_projects\domains\base_domain\bin\startNodeManager.cmd as Administrator  
+Message from the successfully started Node Manager:  
+![11.1.Node Manager](images/img11.1_node_manager.jpg)  
+<p align="center">Pic 11.1: Node Manager</p>  
 
 
-## 10. Configure Mozilla Firefox  
+### 11.2. Admin Server  
+Execute %ORACLE_HOME%\user_projects\domains\base_domain\bin\startWebLogic.cmd as Administrator  
+Message from the successfully started Admin Server:  
+![11.2.Node Manager](images/img11.2_node_manager.jpg)  
+<p align="center">Pic 11.2: Node Manager</p>  
+
+
+Do not close cmd windows with Node Manager and Admin Server  
+
+### 11.3. Forms Server
+URL: http://localhost:7001/console
+Navigation: Environment > Servers > tab “Control”
+![11.3.1.Weblogic Console](images/img11.3.1_weblogic_console.jpg)  
+<p align="center">Pic 11.3.1: Weblogic Console</p>  
+
+
+Select WLS_FORMS and run it by “Start” button
+Status of successfully started WLS_FORMS should change to "RUNNING" 
+![11.3.2.Started Forms Server](images/img11.3.2_wls_server_running.jpg)  
+<p align="center">Pic 11.3.2: Started Forms Server</p>  
+
+
+## 11. Configure Mozilla Firefox  
 Navigation: Firefox > Options > General > Applications  
 Action "Use Java(TM) Web Start Launcher" for the "JNPL File" content  
-![10.1.Firefox. JNPL File](images/img10.1_firefox.jpg)  
+![11.1.Firefox. JNPL File](images/img11.1_firefox.jpg)  
 <p align="center">Pic 10.1: Firefox. JNPL File</p>  
 
 
-
-
-## 10. Create simpliest form based on the database table  
-### 10.1.Run Oracle Forms Builder  
-Navigation: Windows Start > All Programs >  Oracle FMW 12c Domain - [domain name, see chapter 8] - 12.2.1.3.0 > Oracle Forms Developer - forms1 > Forms Builder  
+## 12. Create simpliest form based on the database table
+### 12.1.Run Oracle Forms Builder  
+Navigation: Windows Start > All Programs >  Oracle FMW 12c Domain - "domain name, see chapter 8" - 12.2.1.3.0 > Oracle Forms Developer - forms1 > Forms Builder  
 Forms Builder will started, form with name MODULE1 will created  
-### 10.2. Connect to Oracle Database from the Forms Builder  
+### 12.2. Connect to Oracle Database from the Forms Builder  
 Navigation: Forms Builder > File > Connect  
-![10.2.1.Forms Builder. Connect to database](images/img10.2.1_create_form_connect_to_database.jpg)  
-<p align="center">Pic 10.2.1: Forms Builder. Connect to database</p>  
+![12.2.1.Forms Builder. Connect to database](images/img12.2.1_create_form_connect_to_database.jpg)  
+<p align="center">Pic 12.2.1: Forms Builder. Connect to database</p>  
 
 
-### 10.3. Create Data Block by the Data Block Wizard  
+### 12.3. Create Data Block by the Data Block Wizard  
 Navigation: right click on "MODULE1" > select Datablock Wizard  
-![10.3.1.Forms Builder. Connect to database](images/img10.3.1_create_form_data_block.jpg)  
-<p align="center">Pic 10.3.1: Forms Builder. Create data block</p>  
+![12.3.1.Forms Builder. Connect to database](images/img12.3.1_create_form_data_block.jpg)  
+<p align="center">Pic 12.3.1: Forms Builder. Create data block</p>  
 
 
-![10.3.2.Forms Builder. Connect to database](images/img10.3.2_create_form_data_block.jpg)  
-<p align="center">Pic 10.3.2: Forms Builder. Create data block</p>  
+![12.3.2.Forms Builder. Connect to database](images/img12.3.2_create_form_data_block.jpg)  
+<p align="center">Pic 12.3.2: Forms Builder. Create data block</p>  
 
 
-![10.3.3.Forms Builder. Connect to database](images/img10.3.3_create_form_data_block.jpg)  
-<p align="center">Pic 10.3.3: Forms Builder. Create data block</p>  
+![12.3.3.Forms Builder. Connect to database](images/img12.3.3_create_form_data_block.jpg)  
+<p align="center">Pic 12.3.3: Forms Builder. Create data block</p>  
+
+![12.3.4.Forms Builder. Connect to database](images/img12.3.4_create_form_data_block.jpg)  
+<p align="center">Pic 12.3.4: Forms Builder. Create data block</p>  
 
 
-Save your form  
+![12.3.5.Forms Builder. Connect to database](images/img12.3.5_create_form_data_block.jpg)  
+<p align="center">Pic 12.3.5: Forms Builder. Create data block</p>  
+
+
+![12.3.6.Forms Builder. Connect to database](images/img12.3.6_create_form_data_block.jpg)  
+<p align="center">Pic 12.3.6: Forms Builder. Create data block</p>  
+
+
+![12.3.7.Forms Builder. Connect to database](images/img12.3.7_create_form_data_block.jpg)  
+<p align="center">Pic 12.3.7: Forms Builder. Create data block</p>  
+
+
+![12.3.8.Forms Builder. Connect to database](images/img12.3.8_create_form_data_block.jpg)  
+<p align="center">Pic 12.3.8: Forms Builder. Create data block</p>  
+
+
+![12.3.9.Forms Builder. Connect to database](images/img12.3.9_create_form_data_block.jpg)  
+<p align="center">Pic 12.3.9: Forms Builder. Create data block</p>  
+
+Save your form to folder that in the FORMS_MODULE_PATH (see chapter 10)  
 
 
 
