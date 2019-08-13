@@ -135,7 +135,7 @@ Variables: ORACLE_HOME, FORMS_BUILDER_CLASSPATH
 <p align="center">Pic 9.1: Configure Forms Environment Variables</p>  
 
 
-![9.2.Configure Forms Environment Variables](images/img9.2_setup_tns_alias_run_oracle_network_manager.jpg)  
+![9.2.Configure Forms Environment Variables](images/img9.2_configure_env.jpg)  
 <p align="center">Pic 9.2: Configure Forms Environment Variables</p>  
 
 
