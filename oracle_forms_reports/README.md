@@ -204,7 +204,7 @@ Message from the successfully started Node Manager:
 ### 11.2. Admin Server  
 Execute %ORACLE_HOME%\user_projects\domains\base_domain\bin\startWebLogic.cmd as Administrator  
 Message from the successfully started Admin Server:  
-![11.2.Node Manager](images/img11.2_node_manager.jpg)  
+![11.2.Node Manager](images/img11.2_admin_server.jpg)  
 <p align="center">Pic 11.2: Node Manager</p>  
 
 
