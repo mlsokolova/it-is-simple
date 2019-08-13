@@ -115,11 +115,37 @@ Select Create Domain as Configuration Type
 <p align="center">Pic 17: Configure FMW. Create domain</p>  
 
 Select following templates: Oracle Forms; Oracle Enterprise Manager; Oracle JRF   
-![17.Configure FMW. Select templates](images/img18_configure_fmw_select_domain_templates.jpg)  
+![18.Configure FMW. Select templates](images/img18_configure_fmw_select_domain_templates.jpg)  
 <p align="center">Pic 18: Configure FMW. Select templates</p>  
 
 
+Keep the default value in the Application Location screen  
 
+Enter administration username and password of WebLogic Domain in the Administrator Account screen  
+
+Configure connection details to the Fusion Middleware Repository for JDBC Datasources  
+![19.Configure FMW. Fusion Middleware Repository connection details ](images/img19_configure_fmw_database_configuration.jpg)  
+<p align="center">Pic 19: Configure FMW. Fusion Middleware Repository connection details</p>  
+
+
+## 9.Configure Forms Environment variables  
+Navigation: Windows Start > Computer > Properties >Advanced System Settings > Environment Variables  
+Variables: ORACLE_HOME, FORMS_BUILDER_CLASSPATH  
+![20.Configure Forms Environment Variables](images/img20_configure_env.jpg)  
+<p align="center">Pic 20: Configure Forms Environment Variables</p>  
+
+
+![21.Configure Forms Environment Variables](images/img21_configure_env.jpg)  
+<p align="center">Pic 21: Configure Forms Environment Variables</p>  
+
+
+Value for the FORMS_BUILDER_PATH:  
+```
+FORMS_BUILDER_PATH=%ORACLE_HOME%\jlib\frmbld.jar;%ORACLE_HOME%\jlib\importer.jar;%ORACLE_HOME%\jlib\debugger.jar;%ORACLE_HOME%\jlib\utj.jar;%ORACLE_HOME%\jlib\ewt3.jar;%ORACLE_HOME%\jlib\share.jar;%ORACLE_HOME%\jlib\dfc.jar;%ORACLE_HOME%\jlib\ohj.jar;%ORACLE_HOME%\jlib\help-share.jar;%ORACLE_HOME%\jlib\oracle_ice.jar;%ORACLE_HOME%\jlib\jewt4.jar;%ORACLE_HOME%\forms\java\frmwebutil.jar;%ORACLE_HOME%\forms\java\frmall.jar
+```
+
+## 10. Set up TNS Alias
+Run Oracle Net Manager as
 
 References:  
 Documentation: https://docs.oracle.com/middleware/12213/formsandreports/index.html  
