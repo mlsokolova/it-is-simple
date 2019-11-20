@@ -1,0 +1,9 @@
+XE =
+	(DESCRIPTION = 
+		(ADDRESS = (PROTOCOL = TCP) (HOST = localhost) 
+(PORT = 32118)
+		(CONNECT_DATA = 
+			(SERVER = DEDICATED)
+			(SERVICE_NAME = xepdb1)
+	)
+)
